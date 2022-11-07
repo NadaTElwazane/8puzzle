@@ -15,8 +15,8 @@ from PyQt5 import QtCore as qtc
 
 class BoardWindow(qtw.QDialog):
     array=[]
-    #start_val = 125340678
-    start_val = 724508631
+    start_val = 125340678
+    #start_val = 724506831
     goal_val = 12345678
     count = 0
 
