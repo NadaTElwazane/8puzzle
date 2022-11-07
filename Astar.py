@@ -9,15 +9,16 @@ class Astar:
     def solve(start, goal, mode):
         Astar.array_gui.clear()
         begin = time.time()
+        # M mode is for Manhattan distance and E mode is for Euclidian distance
         if mode == "M":
             Astar.manhattan(start, goal)
         else:
             Astar.eucledian(start, goal)
-        depth = start.depth
         frontier_h = PriorityQueue()
         frontier_s = set()
         explored = set()
         parent_map = {}
+        # current depth of the search tree
         depth = start.depth
         frontier_s.add(start)
         frontier_h.put(start)
@@ -29,18 +30,21 @@ class Astar:
                 continue
             v = s.value
             explored.add(s)
+            # update the depth of the search tree to be the maximum 
             depth = max(depth, s.depth)
+            # check if the state is the goal
             if s == goal:
                 print("Goal Achieved")
                 print(v)
                 break
+            # get the children of the current state
             array = s.children()
             for child in array:
-                if child not in explored and child not in frontier_s:
-                    if mode == "M":
+                if mode == "M":
                         Astar.manhattan(child, goal)
-                    else:
+                else:
                         Astar.eucledian(child, goal)
+                if child not in explored and child not in frontier_s:
                     frontier_s.add(child)
                     frontier_h.put(child)
                     parent_map[child] = s
