@@ -1,7 +1,7 @@
 import time
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from main import State
+from puzzlehelpers import State
 
 class DFS:
     frontier_s = set()

@@ -67,20 +67,20 @@ class Board():
 
 
 
-if __name__ == "__main__":
-    start_val = 125340678
-    goal_val = 12345678
-    start = State(None, None, start_val, 0.0, 0, -1.0)
-    goal = State(None, None, goal_val, 1.0, 0, -1.0)
-    print("BFS")
-    BFS.solve(start, goal)
-    print("____________________________________________________________")
-    print("DFS")
-    DFS.solve(start, goal)
-    print("____________________________________________________________")
-    print("A-star Manhattan")
-    Astar.solve(start, goal, "M")
-    print("____________________________________________________________")
-    print("A-star Eucledian")
-    Astar.solve(start, goal, "E")
+# if __name__ == "__main__":
+#     start_val = 125340678
+#     goal_val = 12345678
+#     start = State(None, None, start_val, 0.0, 0, -1.0)
+#     goal = State(None, None, goal_val, 1.0, 0, -1.0)
+#     print("BFS")
+#     BFS.solve(start, goal)
+#     print("____________________________________________________________")
+#     print("DFS")
+#     DFS.solve(start, goal)
+#     print("____________________________________________________________")
+#     print("A-star Manhattan")
+#     Astar.solve(start, goal, "M")
+#     print("____________________________________________________________")
+#     print("A-star Eucledian")
+#     Astar.solve(start, goal, "E")
 

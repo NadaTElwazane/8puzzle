@@ -4,7 +4,7 @@ import Puzzle
 from BFS import *
 from DFS import *
 from Astar import *
-import main
+import puzzlehelpers
 from Puzzle import Ui_Dialog
 
 import sys
@@ -15,8 +15,8 @@ from PyQt5 import QtCore as qtc
 
 class BoardWindow(qtw.QDialog):
     array=[]
-    start_val = 125340678
-    #start_val = 724506831
+    # start_val = 125340678
+    start_val = 724506831
     goal_val = 12345678
     count = 0
 
@@ -98,8 +98,8 @@ class BoardWindow(qtw.QDialog):
     def solve_BFS(self):
         self.array.clear()
         BoardWindow.count = 0
-        start = main.State(None, None, self.start_val, 0, 0, -1)
-        goal = main.State(None, None, self.goal_val, 1, 0, -1)
+        start = puzzlehelpers.State(None, None, self.start_val, 0, 0, -1)
+        goal = puzzlehelpers.State(None, None, self.goal_val, 1, 0, -1)
         print("BFS")
         if self.puzzle.bfs:
             BoardWindow.print_state(self, self.start_val)
@@ -111,8 +111,8 @@ class BoardWindow(qtw.QDialog):
     def solve_DFS(self):
         self.array.clear()
         BoardWindow.count = 0
-        start = main.State(None, None, self.start_val, 0, 0, -1)
-        goal = main.State(None, None, self.goal_val, 1, 0, -1)
+        start = puzzlehelpers.State(None, None, self.start_val, 0, 0, -1)
+        goal = puzzlehelpers.State(None, None, self.goal_val, 1, 0, -1)
         print("DFS")
         if self.puzzle.bfs:
             BoardWindow.print_state(self, self.start_val)
@@ -126,8 +126,8 @@ class BoardWindow(qtw.QDialog):
     def solve_Astar_M(self):
         self.array.clear()
         BoardWindow.count = 0
-        start = main.State(None, None, self.start_val, 0, 0, -1)
-        goal = main.State(None, None, self.goal_val, 1, 0, -1)
+        start = puzzlehelpers.State(None, None, self.start_val, 0, 0, -1)
+        goal = puzzlehelpers.State(None, None, self.goal_val, 1, 0, -1)
         print("Astar Manhattan")
         if self.puzzle.bfs:
             BoardWindow.print_state(self, self.start_val)
@@ -140,8 +140,8 @@ class BoardWindow(qtw.QDialog):
     def solve_Astar_E(self):
         self.array.clear()
         BoardWindow.count = 0
-        start = main.State(None, None, self.start_val, 0, 0, -1.0)
-        goal = main.State(None, None, self.goal_val, 1, 0, -1.0)
+        start = puzzlehelpers.State(None, None, self.start_val, 0, 0, -1.0)
+        goal = puzzlehelpers.State(None, None, self.goal_val, 1, 0, -1.0)
         print("Astar Euclidean")
         if self.puzzle.bfs:
             BoardWindow.print_state(self, self.start_val)
