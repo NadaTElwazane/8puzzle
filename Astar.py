@@ -16,16 +16,22 @@ class Astar:
             Astar.eucledian(start, goal)
         frontier_h = PriorityQueue()
         frontier_s = set()
+        frontier_m = {}
         explored = set()
         parent_map = {}
         # current depth of the search tree
         depth = start.depth
         frontier_s.add(start)
         frontier_h.put(start)
+        frontier_m[start] = start
         while frontier_s:
             s = frontier_h.get()
             if s in frontier_s:
                 frontier_s.remove(s)
+            else:
+                continue
+            if s in frontier_m:
+                frontier_m.pop(s)
             else:
                 continue
             v = s.value
@@ -47,14 +53,16 @@ class Astar:
                         Astar.eucledian(child, goal)
                 if child not in explored and child not in frontier_s:
                     frontier_s.add(child)
+                    frontier_m[child] = child
                     frontier_h.put(child)
                     parent_map[child] = s
                 elif child not in explored and child in frontier_s:
                     # checks if child in frontier and has a higher cost than the current child
-                    old_child = parent_map.get(child)
+                    old_child = frontier_m.get(child)
                     if old_child.f > child.f:
                         if old_child in frontier_s:
                             frontier_s.remove(old_child)
+                            frontier_m.pop(old_child)
                         # add the new child to the frontier
                         parent_map[child] = s
                         frontier_s.add(child)
